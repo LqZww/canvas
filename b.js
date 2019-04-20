@@ -13,11 +13,9 @@
 // context.lineTo(300,300);
 // context.fill();
 
-
 /*********控制宽高******/
-document.body.ontouchstart = function (eee) {
-    eee.preventDefault()
-}
+
+
 var yyy = document.getElementById('xxx');
 var context = yyy.getContext('2d');
 var lineWidth = 5
