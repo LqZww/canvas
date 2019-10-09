@@ -193,7 +193,7 @@ function listenToUse(canvas) {
                 return
             }
             if (eraserEnabled) {
-                context.clearRect(x - 5, y - 5, 10, 10)
+                context.clearRect(x - 5, y - 5, 20, 20)
             } else {
                 var newPoint = {
                     x: x,
