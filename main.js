@@ -1,33 +1,11 @@
-// context.strokeStyle = 'yellow';
-// context.strokeRect(10,10,100,100);
-
-// context.fillStyle = 'red';
-// context.fillRect(10,10,100,100);
-
-// context.clearRect(50,50,10,10);
-
-
-// context.beginPath();
-// context.moveTo(240,240);
-// context.lineTo(300,240);
-// context.lineTo(300,300);
-// context.fill();
-
-/*********控制宽高******/
-
-
-var yyy = document.getElementById('xxx');
-var context = yyy.getContext('2d');
-var lineWidth = 5
+var yyy = document.getElementById("xxx")
+var context = yyy.getContext("2d")
+var lineWidth = 2
 
 autoSetCanvasSize(yyy)
 
+listenToUse(yyy)
 
-/*******监听鼠标事件*****/
-listenToUser(yyy)
-
-
-/************控制橡皮擦是否开启**********/
 var eraserEnabled = false
 pen.onclick = function () {
     eraserEnabled = false
@@ -39,112 +17,123 @@ eraser.onclick = function () {
     eraser.classList.add('active')
     pen.classList.remove('active')
 }
-
-//清屏
 clear.onclick = function () {
-    context.clearRect(0, 0, yyy.width, yyy.height);
+    context.clearRect(0, 0, yyy.width, yyy.height)
 }
-
-//保存
 download.onclick = function () {
+    // 设置画布背景
+    context.globalCompositeOperation = 'destination-over';
+    context.fillStyle = 'white';
+    context.fillRect(0, 0, yyy.width, yyy.height);
+
     var url = yyy.toDataURL("image/png")
     var a = document.createElement('a')
     document.body.appendChild(a)
     a.href = url
-    a.download = '我的画儿'
+    a.download = "未命名"
     a.target = '_blank'
     a.click()
 }
 
-//实现颜色切换
 black.onclick = function () {
-    context.fillStyle = 'black'
     context.strokeStyle = 'black'
     black.classList.add('active')
     red.classList.remove('active')
     orange.classList.remove('active')
     yellow.classList.remove('active')
     green.classList.remove('active')
+    cyan.classList.remove('active')
     blue.classList.remove('active')
     purple.classList.remove('active')
 }
 red.onclick = function () {
-    context.fillStyle = 'red'
     context.strokeStyle = 'red'
     black.classList.remove('active')
     red.classList.add('active')
     orange.classList.remove('active')
     yellow.classList.remove('active')
     green.classList.remove('active')
+    cyan.classList.remove('active')
     blue.classList.remove('active')
     purple.classList.remove('active')
 }
 orange.onclick = function () {
-    context.fillStyle = 'orange'
     context.strokeStyle = 'orange'
     black.classList.remove('active')
     red.classList.remove('active')
     orange.classList.add('active')
     yellow.classList.remove('active')
     green.classList.remove('active')
+    cyan.classList.remove('active')
     blue.classList.remove('active')
     purple.classList.remove('active')
 }
 yellow.onclick = function () {
-    context.fillStyle = 'yellow'
     context.strokeStyle = 'yellow'
     black.classList.remove('active')
     red.classList.remove('active')
     orange.classList.remove('active')
     yellow.classList.add('active')
     green.classList.remove('active')
+    cyan.classList.remove('active')
     blue.classList.remove('active')
     purple.classList.remove('active')
 }
 green.onclick = function () {
-    context.fillStyle = 'green'
     context.strokeStyle = 'green'
     black.classList.remove('active')
     red.classList.remove('active')
     orange.classList.remove('active')
     yellow.classList.remove('active')
     green.classList.add('active')
+    cyan.classList.remove('active')
+    blue.classList.remove('active')
+    purple.classList.remove('active')
+}
+cyan.onclick = function () {
+    context.strokeStyle = 'cyan'
+    black.classList.remove('active')
+    red.classList.remove('active')
+    orange.classList.remove('active')
+    yellow.classList.remove('active')
+    green.classList.remove('active')
+    cyan.classList.add('active')
     blue.classList.remove('active')
     purple.classList.remove('active')
 }
 blue.onclick = function () {
-    context.fillStyle = 'blue'
     context.strokeStyle = 'blue'
     black.classList.remove('active')
     red.classList.remove('active')
     orange.classList.remove('active')
     yellow.classList.remove('active')
     green.classList.remove('active')
+    cyan.classList.remove('active')
     blue.classList.add('active')
     purple.classList.remove('active')
 }
 purple.onclick = function () {
-    context.fillStyle = 'purple'
     context.strokeStyle = 'purple'
     black.classList.remove('active')
     red.classList.remove('active')
     orange.classList.remove('active')
     yellow.classList.remove('active')
     green.classList.remove('active')
+    cyan.classList.remove('active')
     blue.classList.remove('active')
     purple.classList.add('active')
 }
 
-
 thin.onclick = function () {
-    lineWidth = 5
+    lineWidth = 1
+}
+medium.onclick = function () {
+    lineWidth = 4
 }
 thick.onclick = function () {
-    lineWidth = 10
+    lineWidth = 7
 }
 
-
-/************/
 function autoSetCanvasSize(canvas) {
     setCanvasSize()
 
@@ -155,84 +144,72 @@ function autoSetCanvasSize(canvas) {
     function setCanvasSize() {
         var pageWidth = document.documentElement.clientWidth
         var pageHeight = document.documentElement.clientHeight
-
         canvas.width = pageWidth
         canvas.height = pageHeight
     }
 }
 
-
-
 function drawCircle(x, y, radius) {
-    context.beginPath();
-    // context.fillStyle = 'black'
-    context.arc(x, y, radius, 0, Math.PI * 2);
-    context.fill();
+    context.beginPath()
+    context.arc(x, y, radius, 0, Math.PI * 2)
+    context.fill()
 }
 
 function drawLine(x1, y1, x2, y2) {
-    context.beginPath();
-    // context.strokeStyle = 'black'
-    context.moveTo(x1, y1); //起点
-    context.lineWidth = lineWidth;
-    context.lineTo(x2, y2); //终点
-    context.stroke();
-    context.closePath();
+    context.beginPath()
+    context.moveTo(x1, y1)
+    context.lineWidth = lineWidth
+    context.lineTo(x2, y2)
+    context.stroke()
+    context.closePath()
 }
 
+function listenToUse(canvas) {
 
-function listenToUser(canvas) {
     var using = false
     var lastPoint = {
         x: undefined,
         y: undefined
     }
-    //特性检测
     if (document.body.ontouchstart !== undefined) {
-        //说明是触屏设备
+        //触屏设备
         canvas.ontouchstart = function (aaa) {
             var x = aaa.touches[0].clientX
             var y = aaa.touches[0].clientY
-            console.log(x, y)
             using = true
             if (eraserEnabled) {
                 context.clearRect(x - 5, y - 5, 10, 10)
             } else {
                 lastPoint = {
-                    "x": x,
-                    "y": y
+                    x: x,
+                    y: y
                 }
             }
         }
         canvas.ontouchmove = function (aaa) {
-            // console.log('边摸边动')
             var x = aaa.touches[0].clientX
             var y = aaa.touches[0].clientY
-
             if (!using) {
                 return
             }
-
             if (eraserEnabled) {
                 context.clearRect(x - 5, y - 5, 10, 10)
             } else {
                 var newPoint = {
-                    "x": x,
-                    "y": y
+                    x: x,
+                    y: y
                 }
                 drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y)
                 lastPoint = newPoint
 
             }
         }
-        canvas.ontouchend = function (aaa) {
-            // console.log('摸完了')
+        canvas.ontouchend = function () {
             using = false
         }
     } else {
-        //说明是非触屏设备
+        //非触屏设备
         canvas.onmousedown = function (aaa) {
-            // console.log('down')
             var x = aaa.clientX
             var y = aaa.clientY
             using = true
@@ -240,37 +217,34 @@ function listenToUser(canvas) {
                 context.clearRect(x - 5, y - 5, 10, 10)
             } else {
                 lastPoint = {
-                    "x": x,
-                    "y": y
+                    x: x,
+                    y: y
                 }
             }
         }
+
         canvas.onmousemove = function (aaa) {
-            // console.log('move')
             var x = aaa.clientX
             var y = aaa.clientY
-
             if (!using) {
                 return
             }
-
             if (eraserEnabled) {
                 context.clearRect(x - 5, y - 5, 10, 10)
             } else {
                 var newPoint = {
-                    "x": x,
-                    "y": y
+                    x: x,
+                    y: y
                 }
                 drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y)
                 lastPoint = newPoint
 
             }
-
         }
 
         canvas.onmouseup = function (aaa) {
-            // console.log('up')
             using = false
         }
     }
 }
+

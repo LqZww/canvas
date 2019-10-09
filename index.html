@@ -1,30 +1,29 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>我的画板</title>
-    <link rel="stylesheet" href="./a.css">
-
+    <title>个人画板</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
-    <canvas id="xxx" width=300 height=300></canvas>
+    <canvas id="xxx"></canvas>
     <div id="actions" class="actions">
-        <svg id="pen" class="active icon">
+        <svg id="pen" class="icon active" aria-hidden="true">
             <use xlink:href="#icon-pen"></use>
         </svg>
-        <svg id="eraser" class="icon">
-            <use xlink:href="#icon-Eraser"></use>
+        <svg id="eraser" class="icon" aria-hidden="true">
+            <use xlink:href="#icon-eraser"></use>
         </svg>
-        <svg id="clear" class="icon">
+        <svg id="clear" class="icon" aria-hidden="true">
             <use xlink:href="#icon-clear"></use>
         </svg>
-        <svg id="download" class="icon">
-                <use xlink:href="#icon-save"></use>
-            </svg>
+        <svg id="download" class="icon" aria-hidden="true">
+            <use xlink:href="#icon-save"></use>
+        </svg>
     </div>
     <ol class="colors">
         <li id="black" class="black active"></li>
@@ -32,16 +31,19 @@
         <li id="orange" class="orange"></li>
         <li id="yellow" class="yellow"></li>
         <li id="green" class="green"></li>
+        <li id="cyan" class="cyan"></li>
         <li id="blue" class="blue"></li>
         <li id="purple" class="purple"></li>
     </ol>
     <ol class="sizes">
         <li id="thin" class="thin"></li>
+        <li id="medium" class="medium"></li>
         <li id="thick" class="thick"></li>
     </ol>
 
-    <script src="./b.js"></script>
-    <script src="//at.alicdn.com/t/font_1153282_7ysfy0i1nbt.js"></script>
+
+    <script src="./main.js"></script>
+    <script src="//at.alicdn.com/t/font_1449545_me7x3yk4q2d.js"></script>
 </body>
 
-</html> 
+</html>
